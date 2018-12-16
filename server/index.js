@@ -13,8 +13,12 @@ const server = require('http').createServer(function (request, response) {
 
 const io = require("socket.io")(server);
 
-io.on("connection", client => {
-    client.emit("transfer", [false, {}])
+let client;
+
+io.on("connection", c => {
+    client = c;
+    // example
+    client.emit("transfer", [false, {}]);
     client.emit("transfer", [true, {
         ball: {x: 20, y: 50, z: 30},
         teams: [
@@ -23,7 +27,7 @@ io.on("connection", client => {
                 {x: -20, y: 2, z: 17}]},
             {players: [
                 {x: 17, y: 2, z: 50},
-                {x: -30, y: 2, z: -50}]}]}])
+                {x: -30, y: 2, z: -50}]}]}]);
 });
 
 server.listen(8080);
