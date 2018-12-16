@@ -18,4 +18,4 @@ Requires node.js.
 
 Download the source, unzip.
 
-Go into the resulting folder and run the `run` file from the command line.
+Go into the resulting folder and run `cd server; node index.js` from the command line.
