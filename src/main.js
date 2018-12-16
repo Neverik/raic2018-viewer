@@ -18,8 +18,7 @@ function receive(d) {
     isState = d[0];
     data = d[1];
     if (isState) {
-        console.log(data);
-        cache.push(data);
+        cache.push(...data);
     } else {
         initialOptions = {
             field: {w: 200, l: 400},

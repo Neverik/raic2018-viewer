@@ -19,7 +19,7 @@ io.on("connection", c => {
     client = c;
     // example
     client.emit("transfer", [false, {}]);
-    client.emit("transfer", [true, {
+    client.emit("transfer", [true, [{
         ball: {x: 20, y: 50, z: 30},
         teams: [
             {players: [
@@ -27,7 +27,7 @@ io.on("connection", c => {
                 {x: -20, y: 2, z: 17}]},
             {players: [
                 {x: 17, y: 2, z: 50},
-                {x: -30, y: 2, z: -50}]}]}]);
+                {x: -30, y: 2, z: -50}]}]}]]);
 });
 
 server.listen(8080);
