@@ -12,22 +12,22 @@ const server = require('http').createServer(function (request, response) {
 });
 
 const io = require("socket.io")(server);
-
-let client;
-
-io.on("connection", c => {
-    client = c;
+io.on("connection", client => {
     // example
     client.emit("transfer", [false, {}]);
-    client.emit("transfer", [true, [{
-        ball: {x: 20, y: 50, z: 30},
-        teams: [
-            {players: [
-                {x: 10, y: 2, z: 2},
-                {x: -20, y: 2, z: 17}]},
-            {players: [
-                {x: 17, y: 2, z: 50},
-                {x: -30, y: 2, z: -50}]}]}]]);
+    let states = [];
+    for (let i = 0; i < 200; i++) {
+        states.push({
+            ball: {x: 20, y: 50 + i, z: 30},
+            teams: [
+                {players: [
+                    {x: 10 - i, y: 2, z: 2},
+                    {x: -20 + i, y: 2, z: 17}]},
+                {players: [
+                    {x: 17, y: 2, z: 50 + i},
+                    {x: -30, y: 2, z: -50 - i}]}]});
+    }
+    client.emit("transfer", [true, states])
 });
 
 server.listen(8080);

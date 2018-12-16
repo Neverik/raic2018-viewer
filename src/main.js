@@ -4,7 +4,7 @@ let font;
 let redrawn = 0;
 let offset = [0, 0, 0];
 let rot = [0, 0];
-let pause = false
+let pause = false;
 let cache = [];
 let step = 0;
 
@@ -43,12 +43,6 @@ function setup() {
 }
 
 function draw() {
-    console.log(cache)
-    if (cache.slice(step).length > 0) {
-        state = cache[step];
-        step++;
-    }
-
     if (options == null) {
         background(250);
         if (font.font !== undefined) {
@@ -67,8 +61,11 @@ function draw() {
             }
         }
     } else {
-        if (pause) return;
-        if (state == null) return;
+        if (cache.slice(step).length > 0 && pause == false) {
+            state = cache[step];
+            step++;
+        }
+        if (state == null) return
 
         background(250);
 

@@ -4,6 +4,12 @@
 
 It launches a server that listens on HTTP and socket.io. Then it opens a browser window and uses it to view the results.
 
+## Controls
+
+* Arrow keys - rotate
+* W, S - zoom
+* Space - stop playback
+
 ## Running
 
 Requires node.js.
