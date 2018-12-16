@@ -40,7 +40,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(600, 600, WEBGL);
+    createCanvas(1200, 600, WEBGL);
 }
 
 function draw() {
@@ -81,8 +81,9 @@ function draw() {
         ambientMaterial(200);
         
         translate(...offset);
+        translate(0, 200, 0);
         rotateX(rot[1]);
-        rotateY(rot[0]);
+        rotateY(rot[0] + PI / 2);
 
         box(options.field.w, 1, options.field.l);
 
