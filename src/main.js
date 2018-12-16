@@ -7,11 +7,11 @@ let rot = [0, 0];
 let pause = false;
 let cache = [];
 let step = 0;
+let forward = true;
 
 const socket = io.connect("localhost:8080");
 socket.on("transfer", data => {
     receive(data);
-    console.log(cache)
 });
 
 function receive(d) {
@@ -61,9 +61,16 @@ function draw() {
             }
         }
     } else {
-        if (cache.slice(step).length > 0 && pause == false) {
-            state = cache[step];
-            step++;
+        if (!pause) {
+            if(forward) {
+                if (cache.slice(step).length > 0 && pause == false) {
+                    state = cache[step++];
+                }
+            } else {
+                if (step > 0) {
+                    state = cache[step--];
+                }
+            }
         }
         if (state == null) return
 
@@ -145,4 +152,12 @@ function mergeDeep(target, ...sources) {
 
 function keyPressed() {
     if (key == ' ') pause = !pause;
+    if (key == 'Q' || key == 'q') {
+        forward = false;
+        pause = false;
+    }
+    if (key == 'E' || key == 'e') {
+        forward = true;
+        pause = false;
+    }
 }
