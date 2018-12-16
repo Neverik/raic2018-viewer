@@ -9,6 +9,8 @@ It launches a server that listens on HTTP and socket.io. Then it opens a browser
 * Arrow keys - rotate
 * W, S - zoom
 * Space - stop playback
+* Q, E - rewind, go forward
+* Enter - go fullscreen
 
 ## Running
 

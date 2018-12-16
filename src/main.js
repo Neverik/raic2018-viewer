@@ -39,7 +39,7 @@ function preload() {
 }
 
 function setup() {
-    createCanvas(1200, 600, WEBGL);
+    createCanvas(displayWidth, displayHeight, WEBGL);
 }
 
 function draw() {
@@ -122,8 +122,8 @@ function draw() {
             if (keyCode == UP_ARROW) rot[1] -= 0.05;
             if (keyCode == DOWN_ARROW) rot[1] += 0.05;
 
-            if (keyCode == RIGHT_ARROW) rot[0] += 0.1
-            if (keyCode == LEFT_ARROW) rot[0] -= 0.1
+            if (keyCode == RIGHT_ARROW) rot[0] += 0.1;
+            if (keyCode == LEFT_ARROW) rot[0] -= 0.1;
         };
     }
 }
@@ -159,5 +159,20 @@ function keyPressed() {
     if (key == 'E' || key == 'e') {
         forward = true;
         pause = false;
+    }
+    if (keyCode == ENTER) fullScreen();
+}
+
+function fullScreen(){
+    if (canvas.RequestFullScreen){
+        canvas.RequestFullScreen();
+    } else if (canvas.webkitRequestFullScreen){
+        canvas.webkitRequestFullScreen();
+    } else if (canvas.mozRequestFullScreen){
+        canvas.mozRequestFullScreen();
+    } else if (canvas.msRequestFullscreen){
+        canvas.msRequestFullscreen();
+    } else {
+        alert("This browser doesn't supporter fullscreen");
     }
 }
